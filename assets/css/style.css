@@ -9,3 +9,8 @@
   width: 100%;
   height: auto;
 }
+
+.selected-character, .defend-character {
+  background-color: red;
+  height: 10px;
+}
