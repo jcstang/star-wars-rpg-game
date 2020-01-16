@@ -4,3 +4,8 @@
 .right-side {
   background-color: rgb(156, 118, 118);
 }
+
+.player-img img {
+  width: 100%;
+  height: auto;
+}
