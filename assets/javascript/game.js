@@ -25,4 +25,16 @@ $(document).ready(function() {
     console.log(event.srcElement.offsetParent.offsetParent.id);
   });
 
+  $('#player-dooku').on('click', function() {
+    console.log(event.srcElement.offsetParent.offsetParent.id);
+  });
+
+  $('#player-palps').on('click', function() {
+    console.log(event.srcElement.offsetParent.offsetParent.id);
+  });
+
+  $('#player-maul').on('click', function() {
+    console.log(event.srcElement.offsetParent.offsetParent.id);
+  });
+
 });
