@@ -22,19 +22,21 @@ $(document).ready(function() {
     // console.log(event.srcElement.offsetParent);
     console.log('event.srcElement.offsetParent.offsetParent');
     console.log(event.srcElement.offsetParent.offsetParent);
+    // this prints the parent element
+    // same as 'this'
     console.log(event.srcElement.offsetParent.offsetParent.id);
   });
 
   $('#player-dooku').on('click', function() {
-    console.log(event.srcElement.offsetParent.offsetParent.id);
+    console.log(this);
   });
 
   $('#player-palps').on('click', function() {
-    console.log(event.srcElement.offsetParent.offsetParent.id);
+    console.log(this);
   });
 
   $('#player-maul').on('click', function() {
-    console.log(event.srcElement.offsetParent.offsetParent.id);
+    console.log(this);
   });
 
 });
