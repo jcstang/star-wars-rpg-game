@@ -28,6 +28,12 @@ $(document).ready(function() {
       // increase attack power by certain degree
       //stuff
     }
+
+    defendAttack(opponentAttack) {
+      // do math
+      this.attackCount++;
+      this.health -= opponentAttack;
+    }
   }
 
   var obiWanKenobi = new Player('Obi-Wan Kenobi', '#obi-health', 'player-obi');
@@ -63,7 +69,7 @@ $(document).ready(function() {
 // ========================================
   $('#player-obi').on('click', function() {
     appendSelectedCard(this);
-    console.log(this);
+    // console.log(this);
     
   });
 
@@ -88,18 +94,24 @@ $(document).ready(function() {
     // check for win/lose
     
     if ( !isLeftSideEmpty() && !isRightSideEmpty() ) {
+      // attack left
+      // attack right
+      // did you win yet? what about lose?
+
       //they are ready for attack button
       console.log('ATTACK!!!!');
+      defendingPlayer.defendAttack(attackingPlayer.attackPower);
+      console.log(defendingPlayer.health);
+      defendingPlayer.displayStats();
+
+      attackingPlayer.defendAttack(defendingPlayer.attackPower);
+      console.log(attackingPlayer.health);
+      attackingPlayer.displayStats();
       // perform attack
       // attack(myPlayer, otherGuy);
       // winingHandler()
       // loserHandler()
       // display results
-      if (!obiWanKenobi.attacker) {
-        console.log(obiWanKenobi.name + ' attacked you for ' + obiWanKenobi.attackPower);
-      } else {
-        // attacker message
-      }
 
       // Creates messages for our attack and our opponents counter attack.
       //var attackMessage = "You attacked " + defender.name + " for " + attacker.attack * turnCounter + " damage.";
@@ -126,41 +138,43 @@ $(document).ready(function() {
   function appendSelectedCard(character) {
 
     if ( isLeftSideEmpty() ) {
-
-      // if (id === obiWanKenobi) {
-      //   myPlayer = obiWanKenobi;
-      // }
-
-      character.attacker = true;
-
-      console.log('fill left side');
+      // console.log('fill left side');
       $('#my-side').append( $(character).attr('class', 'col-8 container player') );
-      defendingPlayer = character.id;
-      if (character.id === obiWanKenobi.mainCssId) {
-        console.log('match');
-        obiWanKenobi.attacker = false;
-        var charName = $("<div class='character-name'>").text(character.name);
-        var charName = $('h4 .character-name').text();
-      }
-      // console.log('here is myplayer: ');
-      // console.log(myPlayer);
-      console.log(myPlayer.id);
-      
+      defendingPlayer = getPlayerByCssId(character.id);
+      console.log('defending player is: ');
+      console.log(defendingPlayer);
       
     } else if ( isRightSideEmpty() ) {
-      console.log('fill right side');
+      // console.log('fill right side');
       $('#opponent-side').append( $(character).attr('class', 'col-8 container player') );
-      otherGuy = character.id;
-
-      if (otherGuy.mainCssId ) {
-
-      }
-      console.log(otherGuy);
+      attackingPlayer = getPlayerByCssId(character.id);
+      console.log('attacking player is: ');
+      console.log(attackingPlayer);
+      
 
     } else {
       console.log('do nothing!');
     }
 
+  }
+
+  function getPlayerByCssId(id) {
+    var selectedPlayer;
+    if (id === obiWanKenobi.mainCssId) {
+      selectedPlayer = obiWanKenobi;
+
+    } else if (id === countDooku.mainCssId) {
+      selectedPlayer = countDooku;
+
+    } else if (id === palps.mainCssId) {
+      selectedPlayer = palps;
+
+    } else {
+      //darth maul
+      selectedPlayer = darthMaul;
+    }
+
+    return selectedPlayer;
   }
 
   function isWinningState() {
