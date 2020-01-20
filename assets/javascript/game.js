@@ -33,75 +33,26 @@ darthMaul.logName();
 $(document).ready(function() {
 
   $('#player-obi').on('click', function() {
-    // console.log(this.id);
-
-    // TODO: make the rest look like this
-    if ( isLeftSideEmpty() ) {
-      console.log('fill left side');
-      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-      // console.log(this);
-      appendSelectedCard(this);
-
-    } else if ( isRightSideEmpty() ) {
-      console.log('fill right side');
-      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
-      appendSelectedCard(this);
-
-    } else {
-      console.log('do nothing!');
-    }
-
+    appendSelectedCard(this);
   });
 
   $('#player-dooku').on('click', function() {
-    // console.log(this.id);
-
-    if ( isLeftSideEmpty() ) {
-      console.log('fill left side');
-      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-
-    } else if ( isRightSideEmpty() ) {
-      console.log('fill right side');
-      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
-
-    } else {
-      console.log('do nothing!');
-    }
+    appendSelectedCard(this);
   });
 
   $('#player-palps').on('click', function() {
-    console.log(this.id);
-
-    if ( isLeftSideEmpty() ) {
-      console.log('fill left side');
-      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-
-    } else if ( isRightSideEmpty() ) {
-      console.log('fill right side');
-      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
-
-    } else {
-      console.log('do nothing!');
-    }
-
+    appendSelectedCard(this);
   });
 
   $('#player-maul').on('click', function() {
-    console.log(this.id);
-
-    if ( isLeftSideEmpty() ) {
-      console.log('fill left side');
-      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-
-    } else if ( isRightSideEmpty() ) {
-      console.log('fill right side');
-      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
-
-    } else {
-      console.log('do nothing!');
-    }
+    appendSelectedCard(this);
   });
 
+
+
+  // ================================================
+  // helper functions
+  // ================================================
   function isLeftSideEmpty() {
     return $('#my-side').html() === '';
   }
