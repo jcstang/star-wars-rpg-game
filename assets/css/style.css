@@ -6,11 +6,18 @@
 }
 
 .player-img img {
-  width: 100%;
-  height: auto;
+  margin: 0 2px 0 2px;
+  /* width: 100%; */
+  /* height: auto; */
 }
 
 .selected-character, .defend-character {
   background-color: red;
   height: 10px;
+}
+
+.battle-arena {
+  background-color: lightblue;
+  border: 2px solid green;
+  height: 400px;
 }
