@@ -108,4 +108,22 @@ $(document).ready(function() {
 
   }
 
+  function isWinningState() {
+    //word-match game. match.
+  }
+
+  function isLosingState() {
+    //not a match
+  }
+
+  function winningStateHandler() {
+    // check
+    // ++
+    // resetgame();
+  }
+
+  function losingStateHandler() {
+    
+  }
+
 });
