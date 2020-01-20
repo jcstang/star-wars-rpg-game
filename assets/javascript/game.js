@@ -74,6 +74,10 @@ $(document).ready(function() {
     if ( !isLeftSideEmpty() && !isRightSideEmpty() ) {
       //they are ready for attack button
       console.log('ATTACK!!!!');
+      // perform attack
+      // winingHandler()
+      // loserHandler()
+      // display results
     } else {
       //not ready for attack button
     }
@@ -123,7 +127,9 @@ $(document).ready(function() {
   }
 
   function losingStateHandler() {
-    
+    // check
+    // --
+    // resetgame();
   }
 
 });
