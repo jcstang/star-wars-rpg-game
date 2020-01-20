@@ -3,9 +3,10 @@
 
 
 $(document).ready(function() {
-  var arrayOfHealthIds = ['obi-health', 'dooku-health', 'palps-health', 'maul-health'];
   
-  // create players
+  // ========================================
+  // Player Class - player creation
+  // ========================================
   class Player {
     constructor(name, healthCssId, mainCssId) {
       this.name = name;
@@ -23,26 +24,6 @@ $(document).ready(function() {
       //stuff
     }
   }
-
-  //----
-  // var obiWanKenobi3 = {
-  //   name: 'Obi-Wan Kenobi',
-  //   healthCssId: '#obi-health',
-  //   attackPower: 1,
-  //   health: 123,
-  //   displayStats: function() {
-  //     $(this.healthCssId).text(this.health);
-  //   },
-  //   attack: function() {
-  //     //stuff
-  //   },
-  //   increaseAttack: function() {
-  //     //stuff
-  //   }, 
-  //   logName: function() {
-  //     console.log('Name: ' + this.name);
-  //   }
-  // };
 
   var obiWanKenobi = new Player('Obi-Wan Kenobi', '#obi-health', 'player-obi');
   console.log(obiWanKenobi);
@@ -83,13 +64,19 @@ $(document).ready(function() {
   });
 
   $('#attack-btn').on('click', function() {
-    console.log('ATTACK!!!!');
     // if, there are 2 charactors in position. else, do nothing
     //do something to attack
     // who is where?
     // attack
     // print result of attack
     // check for win/lose
+    
+    if ( !isLeftSideEmpty() && !isRightSideEmpty() ) {
+      //they are ready for attack button
+      console.log('ATTACK!!!!');
+    } else {
+      //not ready for attack button
+    }
   });
 
 
@@ -119,10 +106,6 @@ $(document).ready(function() {
       console.log('do nothing!');
     }
 
-  }
-
-  function displayPlayerStats(player) {
-    $(player.healthCssId).text(player.health);
   }
 
 });
