@@ -1,7 +1,6 @@
 
 
 
-
 $(document).ready(function() {
   
   // ========================================
@@ -12,7 +11,7 @@ $(document).ready(function() {
       this.name = name;
       this.healthCssId = healthCssId;
       this.mainCssId = mainCssId;
-      this.attackPower = 1;
+      this.attackPower = 10;
       this.health = 121;
     }
     displayStats() {
@@ -41,8 +40,10 @@ $(document).ready(function() {
   console.log(darthMaul);
   darthMaul.displayStats();
   
-  
 
+  // variables
+  var myPlayer;
+  var otherGuy;
 
 // ========================================
 // EVENTS
@@ -75,6 +76,7 @@ $(document).ready(function() {
       //they are ready for attack button
       console.log('ATTACK!!!!');
       // perform attack
+      attack(myPlayer, otherGuy);
       // winingHandler()
       // loserHandler()
       // display results
@@ -101,10 +103,17 @@ $(document).ready(function() {
     if ( isLeftSideEmpty() ) {
       console.log('fill left side');
       $('#my-side').append( $(id).attr('class', 'col-8 container player') );
-
+      myPlayer = id;
+      // console.log('here is myplayer: ');
+      // console.log(myPlayer);
+      console.log(myPlayer.id);
+      
+      
     } else if ( isRightSideEmpty() ) {
       console.log('fill right side');
       $('#opponent-side').append( $(id).attr('class', 'col-8 container player') );
+      otherGuy = id;
+      console.log(otherGuy.id);
 
     } else {
       console.log('do nothing!');
@@ -130,6 +139,10 @@ $(document).ready(function() {
     // check
     // --
     // resetgame();
+  }
+
+  function attack(left, right) {
+    //stuff
   }
 
 });
