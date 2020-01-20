@@ -38,11 +38,14 @@ $(document).ready(function() {
     // TODO: make the rest look like this
     if ( isLeftSideEmpty() ) {
       console.log('fill left side');
-      $('#my-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
+      // console.log(this);
+      appendSelectedCard(this);
 
     } else if ( isRightSideEmpty() ) {
       console.log('fill right side');
-      $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+      appendSelectedCard(this);
 
     } else {
       console.log('do nothing!');
@@ -55,11 +58,11 @@ $(document).ready(function() {
 
     if ( isLeftSideEmpty() ) {
       console.log('fill left side');
-      $('#my-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
 
     } else if ( isRightSideEmpty() ) {
       console.log('fill right side');
-      $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
 
     } else {
       console.log('do nothing!');
@@ -71,11 +74,11 @@ $(document).ready(function() {
 
     if ( isLeftSideEmpty() ) {
       console.log('fill left side');
-      $('#my-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
 
     } else if ( isRightSideEmpty() ) {
       console.log('fill right side');
-      $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
 
     } else {
       console.log('do nothing!');
@@ -88,11 +91,11 @@ $(document).ready(function() {
 
     if ( isLeftSideEmpty() ) {
       console.log('fill left side');
-      $('#my-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#my-side').append( $(this).attr('class', 'col-8 container player') );
 
     } else if ( isRightSideEmpty() ) {
       console.log('fill right side');
-      $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+      // $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
 
     } else {
       console.log('do nothing!');
@@ -105,6 +108,22 @@ $(document).ready(function() {
 
   function isRightSideEmpty() {
     return $('#opponent-side').html() === '';
+  }
+
+  function appendSelectedCard(id) {
+
+    if ( isLeftSideEmpty() ) {
+      console.log('fill left side');
+      $('#my-side').append( $(id).attr('class', 'col-8 container player') );
+
+    } else if ( isRightSideEmpty() ) {
+      console.log('fill right side');
+      $('#opponent-side').append( $(id).attr('class', 'col-8 container player') );
+
+    } else {
+      console.log('do nothing!');
+    }
+
   }
 
 });
