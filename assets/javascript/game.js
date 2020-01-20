@@ -13,9 +13,15 @@ $(document).ready(function() {
       this.mainCssId = mainCssId;
       this.attackPower = 10;
       this.health = 121;
+      this.attacker = false;
+      this.attackCount = 0;
     }
     displayStats() {
       $(this.healthCssId).text(this.health);
+    }
+
+    updateCharacter() {
+
     }
 
     attack() {
@@ -41,15 +47,24 @@ $(document).ready(function() {
   darthMaul.displayStats();
   
 
+  // obiWanKenobi.health - countDooku.attackPower
+  // countDooku.health - obiWanKenobi.attackPower
+
+
+// ======= 
+
+
   // variables
-  var myPlayer;
-  var otherGuy;
+  var defendingPlayer;
+  var attackingPlayer;
 
 // ========================================
 // EVENTS
 // ========================================
   $('#player-obi').on('click', function() {
     appendSelectedCard(this);
+    console.log(this);
+    
   });
 
   $('#player-dooku').on('click', function() {
@@ -76,10 +91,20 @@ $(document).ready(function() {
       //they are ready for attack button
       console.log('ATTACK!!!!');
       // perform attack
-      attack(myPlayer, otherGuy);
+      // attack(myPlayer, otherGuy);
       // winingHandler()
       // loserHandler()
       // display results
+      if (!obiWanKenobi.attacker) {
+        console.log(obiWanKenobi.name + ' attacked you for ' + obiWanKenobi.attackPower);
+      } else {
+        // attacker message
+      }
+
+      // Creates messages for our attack and our opponents counter attack.
+      //var attackMessage = "You attacked " + defender.name + " for " + attacker.attack * turnCounter + " damage.";
+      //var counterAttackMessage = defender.name + " attacked you back for " + defender.enemyAttackBack + " damage.";
+
     } else {
       //not ready for attack button
     }
@@ -98,12 +123,25 @@ $(document).ready(function() {
     return $('#opponent-side').html() === '';
   }
 
-  function appendSelectedCard(id) {
+  function appendSelectedCard(character) {
 
     if ( isLeftSideEmpty() ) {
+
+      // if (id === obiWanKenobi) {
+      //   myPlayer = obiWanKenobi;
+      // }
+
+      character.attacker = true;
+
       console.log('fill left side');
-      $('#my-side').append( $(id).attr('class', 'col-8 container player') );
-      myPlayer = id;
+      $('#my-side').append( $(character).attr('class', 'col-8 container player') );
+      defendingPlayer = character.id;
+      if (character.id === obiWanKenobi.mainCssId) {
+        console.log('match');
+        obiWanKenobi.attacker = false;
+        var charName = $("<div class='character-name'>").text(character.name);
+        var charName = $('h4 .character-name').text();
+      }
       // console.log('here is myplayer: ');
       // console.log(myPlayer);
       console.log(myPlayer.id);
@@ -111,9 +149,13 @@ $(document).ready(function() {
       
     } else if ( isRightSideEmpty() ) {
       console.log('fill right side');
-      $('#opponent-side').append( $(id).attr('class', 'col-8 container player') );
-      otherGuy = id;
-      console.log(otherGuy.id);
+      $('#opponent-side').append( $(character).attr('class', 'col-8 container player') );
+      otherGuy = character.id;
+
+      if (otherGuy.mainCssId ) {
+
+      }
+      console.log(otherGuy);
 
     } else {
       console.log('do nothing!');
