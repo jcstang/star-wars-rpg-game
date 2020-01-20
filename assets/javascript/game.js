@@ -17,6 +17,11 @@ $(document).ready(function() {
     displayStats() {
       $(this.healthCssId).text(this.health);
     }
+
+    attack() {
+      // increase attack power by certain degree
+      //stuff
+    }
   }
 
   //----
@@ -75,6 +80,16 @@ $(document).ready(function() {
 
   $('#player-maul').on('click', function() {
     appendSelectedCard(this);
+  });
+
+  $('#attack-btn').on('click', function() {
+    console.log('ATTACK!!!!');
+    // if, there are 2 charactors in position. else, do nothing
+    //do something to attack
+    // who is where?
+    // attack
+    // print result of attack
+    // check for win/lose
   });
 
 
