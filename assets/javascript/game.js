@@ -33,58 +33,78 @@ darthMaul.logName();
 $(document).ready(function() {
 
   $('#player-obi').on('click', function() {
-    console.log(this.id);
-    //TODO: move obi-wan to selected spot
-    $('.selected-character').html('<p>hello there</p>');
-    // $('.battle-arena').text('obiwan');
-    var checkMySide = $('#my-side').html();
-    if (checkMySide === '') {
-      console.log('hmm it looks like it is empty')
+    // console.log(this.id);
+
+    // TODO: make the rest look like this
+    if ( isLeftSideEmpty() ) {
+      console.log('fill left side');
       $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-    } else {
+
+    } else if ( isRightSideEmpty() ) {
+      console.log('fill right side');
       $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+
+    } else {
+      console.log('do nothing!');
     }
 
-    // $('#myDiv2').append( $('#myDiv1>p') );
   });
 
   $('#player-dooku').on('click', function() {
-    console.log(this.id);
-    var checkMySide = $('#my-side').html();
-    var checkOtherSide = $('#opponent-side').html();
+    // console.log(this.id);
 
-    if (checkMySide === '' && checkOtherSide === '') {
-      console.log('gooood... it looks like it is empty')
+    if ( isLeftSideEmpty() ) {
+      console.log('fill left side');
       $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-    } else {
-      console.log('hmmm... someone on the other side, there is.');
+
+    } else if ( isRightSideEmpty() ) {
+      console.log('fill right side');
       $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
 
+    } else {
+      console.log('do nothing!');
     }
   });
 
   $('#player-palps').on('click', function() {
     console.log(this.id);
-    var checkMySide = $('#my-side').html();
-    if (checkMySide === '') {
-      console.log('gooood... it looks like it is empty')
+
+    if ( isLeftSideEmpty() ) {
+      console.log('fill left side');
       $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-    } else {
-      console.log('hmmm... someone on the other side, there is.');
+
+    } else if ( isRightSideEmpty() ) {
+      console.log('fill right side');
       $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+
+    } else {
+      console.log('do nothing!');
     }
+
   });
 
   $('#player-maul').on('click', function() {
     console.log(this.id);
-    var checkMySide = $('#my-side').html();
-    if (checkMySide === '') {
-      console.log('gooood... it looks like it is empty')
+
+    if ( isLeftSideEmpty() ) {
+      console.log('fill left side');
       $('#my-side').append( $(this).attr('class', 'col-8 container player') );
-    } else {
-      console.log('hmmm... someone on the other side, there is.');
+
+    } else if ( isRightSideEmpty() ) {
+      console.log('fill right side');
       $('#opponent-side').append( $(this).attr('class', 'col-8 container player') );
+
+    } else {
+      console.log('do nothing!');
     }
   });
+
+  function isLeftSideEmpty() {
+    return $('#my-side').html() === '';
+  }
+
+  function isRightSideEmpty() {
+    return $('#opponent-side').html() === '';
+  }
 
 });

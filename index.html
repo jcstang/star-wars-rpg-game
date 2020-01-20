@@ -9,19 +9,21 @@
   <link rel="stylesheet" href="/assets/css/reset.css">
   <!-- bootstrap link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:900&display=swap" rel="stylesheet">
   <!-- style link -->
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <!-- Title on top -->
-  <div class="container">
+  <div class="container navbar navbar-light bg-light">
     <h1>Star Wars RPG!</h1>
   </div>
 
   <div class="container">
     <div class="row">
-      <div class="container left-side col-10">
-        <h1>left side</h1>
+      <div class="container left-side col-11">
+        <h1>left side - main part yall or Card wars</h1>
 
         <!-- CARD ROW -->
         <div class="row">
@@ -60,38 +62,40 @@
 
         </div>
         <!-- end of card row -->
-        <h2>Your Character</h2>
-
-        <!-- SELECTED SPOT -->
-        <div class="row">
-          <div class="container selected-character"></div>
-        </div>
-
+        
+        
+        
         <!-- ENEMIES AVAILABLE to attack -->
         <div class="row">
           <div class="container enemy-char-remain"></div>
         </div>
-
-        <!-- Fight section -->
-        <div class="row">
-          <div class="container">
-            <button type="button" class="btn btn-primary">Attack!</button>
-          </div>
-        </div>
-
-        <!-- DEFENDER -->
-        <div class="row">
-          <h4>Defender</h4>
-          <div class="container defend-character"></div>
-        </div>
+        
+        
+        
+        
+        <h2>BATTLE ARENA</h2>
 
         <!-- Action floor -->
         <div class="container">
           <div class="row">
             <div id="my-side" class="container battle-arena col-5"></div>
-            <div id="my-side" class="container battle-arena col-2"></div>
+            <div class="container battle-arena col-2">
+              <div class="row">
+                <div class="container text-center">
+                  <button type="button" class="btn btn-primary">Attack!</button>
+                </div>
+              </div>
+            </div>
             <div id="opponent-side" class="container battle-arena col-5"></div>
           </div>
+        </div>
+
+
+        <div class="container">
+            <h3>Attack Log</h3>
+            <div class="container game-log">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos libero magni, reiciendis non aliquid ab mollitia aspernatur dignissimos minima maiores asperiores iure distinctio, doloribus odio eum aperiam corrupti sit autem, porro praesentium dolores at. Eaque nostrum sed incidunt, assumenda recusandae asperiores similique error porro quisquam? Veritatis iste blanditiis sit dicta modi temporibus repellendus, perspiciatis quia, sapiente magnam omnis ullam, corporis debitis recusandae totam non ipsum! Molestias quos aliquid, eligendi velit enim vitae ducimus voluptate dignissimos!</p>
+            </div>
         </div>
 
       </div>

@@ -1,8 +1,9 @@
+body {
+  background-color: rgb(34, 34, 34);
+  font-family: 'Orbitron', sans-serif;
+}
 .left-side {
   background-color: gray;
-}
-.right-side {
-  background-color: rgb(156, 118, 118);
 }
 
 .player-img img {
@@ -17,7 +18,11 @@
 }
 
 .battle-arena {
-  background-color: lightblue;
-  border: 2px solid green;
+  background-color: gray;
+  border: 2px solid burlywood;
   height: 400px;
+}
+
+.game-log {
+  background-color: whitesmoke;
 }
