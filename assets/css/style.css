@@ -28,3 +28,7 @@ body {
   background-color: whitesmoke;
   height: 10%;
 }
+
+#winning {
+  color: goldenrod;
+}

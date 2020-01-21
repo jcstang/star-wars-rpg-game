@@ -15,6 +15,7 @@ $(document).ready(function() {
       this.health = 121;
       this.attacker = false;
       this.attackCount = 0;
+      this.defeatedOpponents = 0;
     }
     displayStats() {
       $(this.healthCssId).text(this.health);
@@ -101,7 +102,8 @@ $(document).ready(function() {
       console.log(attackingPlayer.health);
       attackingPlayer.displayStats();
       // winningStateHandler();
-      runWinAndLoseHandlers();
+      // FIXME: this is causing a double count
+      // runWinAndLoseHandlers();
       
       // attackingPlayer attacks defendingPlayer
       defendingPlayer.defendAttack(attackingPlayer.attackPower);
@@ -166,14 +168,19 @@ $(document).ready(function() {
       $('#my-side').append( $(character).attr('class', 'col-8 container player') );
       defendingPlayer = getPlayerByCssId(character.id);
       console.log('defending player is: ');
-      console.log(defendingPlayer);
+      // console.log(defendingPlayer);
+      // $('#top-message').text() = 'Choose which enemy to fight, for now...';
+      $('#top-message').text('Choose which enemy to fight, for now...');
+
+      // TODO: replace message
+      // $('top-message').replaceWith('Choose which enemy to fight, for now...');
       
     } else if ( isRightSideEmpty() ) {
       // console.log('fill right side');
       $('#opponent-side').append( $(character).attr('class', 'col-8 container player') );
       attackingPlayer = getPlayerByCssId(character.id);
       console.log('attacking player is: ');
-      console.log(attackingPlayer);
+      // console.log(attackingPlayer);
       
 
     } else {
@@ -210,8 +217,16 @@ $(document).ready(function() {
 
     // console.log( $('#players-available').text() );
     // console.log( $('#players-available').length );
-    if ( $('#players-available').text() === '' ) {
-      console.log('win whole game, yes?');
+    // if ( $('#players-available').text() === '' ) {
+    //   console.log('win whole game, yes?');
+    //   returnValue = true;
+    // }
+
+    // TODO: is this check good?
+    console.log('here is defeated opponents');
+    console.log(defendingPlayer.defeatedOpponents);
+    
+    if (defendingPlayer.defeatedOpponents >= 3) {
       returnValue = true;
     }
 
@@ -227,11 +242,15 @@ $(document).ready(function() {
     if ( isWinningState() ) {
       console.log('hooray you win!!!');
       $('#opponent-side').empty();
+      // TODO: ++ count the enemies defeated
+      defendingPlayer.defeatedOpponents++;
 
       // if you win the game...
-      // do something
       if ( isWinningGameState() ) {
         console.log('congrats! you have won!!!! the whole game yo!!');
+
+        // TODO: print a win message
+      $('.game-log').prepend('<p id="winning">Congratulations, The Galaxy will now rest peacefully.</p>');
       }
 
     }
