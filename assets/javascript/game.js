@@ -118,14 +118,19 @@ $(document).ready(function() {
       defendingPlayer.increaseAttackPower();
       // perform attack
 
+      winningStateHandler();
+      losingStateHandler();
+
       // TODO: who won? is the game over? 
       // winingHandler()
       // loserHandler()
       // display results
 
+      // code shared with me from tutor.
       // Creates messages for our attack and our opponents counter attack.
       //var attackMessage = "You attacked " + defender.name + " for " + attacker.attack * turnCounter + " damage.";
       //var counterAttackMessage = defender.name + " attacked you back for " + defender.enemyAttackBack + " damage.";
+
 
     } else {
       //not ready for attack button
@@ -188,7 +193,7 @@ $(document).ready(function() {
   }
 
   function isWinningState() {
-    //word-match game. match.
+    return ( defendingPlayer.health >= 0 && attackingPlayer.health <= 0 );
   }
 
   function isLosingState() {
@@ -196,6 +201,12 @@ $(document).ready(function() {
   }
 
   function winningStateHandler() {
+
+    if ( isWinningState() ) {
+      console.log('hooray you win!!!');
+      $('#opponent-side').empty();
+    }
+
     // check
     // ++
     // resetgame();
