@@ -115,7 +115,7 @@ $(document).ready(function() {
       attackingPlayer.displayStats();
       winningStateHandler();
       defendingPlayer.increaseAttackPower();
-      
+
       // attackingPlayer attacks defendingPlayer
       defendingPlayer.defendAttack(attackingPlayer.attackPower);
       var attackMessage = attackingPlayer.name + ' attacked ' + defendingPlayer.name + ' for ' + attackingPlayer.attackPower + ' damage.'
@@ -212,7 +212,7 @@ $(document).ready(function() {
   function isWinningGameState() {
     var returnValue = false;
 
-    console.log( $('#players-available').text() );
+    // console.log( $('#players-available').text() );
     // console.log( $('#players-available').length );
     if ( $('#players-available').text() === '' ) {
       console.log('win whole game, yes?');
@@ -235,7 +235,7 @@ $(document).ready(function() {
       // if you win the game...
       // do something
       if ( isWinningGameState() ) {
-        console.log('congrats! you have won!!!!');
+        console.log('congrats! you have won!!!! the whole game yo!!');
       }
 
     }
