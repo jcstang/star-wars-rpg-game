@@ -29,6 +29,10 @@ $(document).ready(function() {
       //stuff
     }
 
+    increaseAttackPower() {
+      this.attackPower *= 2;
+    }
+
     defendAttack(opponentAttack) {
       // do math
       this.attackCount++;
@@ -100,15 +104,21 @@ $(document).ready(function() {
 
       //they are ready for attack button
       console.log('ATTACK!!!!');
+
+      // attackingPlayer attacks defendingPlayer
       defendingPlayer.defendAttack(attackingPlayer.attackPower);
       console.log(defendingPlayer.health);
       defendingPlayer.displayStats();
 
+      // defendingPlayer attacks attackingPlayer
       attackingPlayer.defendAttack(defendingPlayer.attackPower);
       console.log(attackingPlayer.health);
       attackingPlayer.displayStats();
+
+      defendingPlayer.increaseAttackPower();
       // perform attack
-      // attack(myPlayer, otherGuy);
+
+      // TODO: who won? is the game over? 
       // winingHandler()
       // loserHandler()
       // display results
