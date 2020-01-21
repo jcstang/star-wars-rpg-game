@@ -107,19 +107,25 @@ $(document).ready(function() {
 
       // attackingPlayer attacks defendingPlayer
       defendingPlayer.defendAttack(attackingPlayer.attackPower);
+      var attackMessage = attackingPlayer.name + ' attacked ' + defendingPlayer.name + ' for ' + attackingPlayer.attackPower + ' damage.'
+      $('.game-log').append('<p>' + attackMessage +'</p>');
       console.log(defendingPlayer.health);
       defendingPlayer.displayStats();
 
       // defendingPlayer attacks attackingPlayer
       attackingPlayer.defendAttack(defendingPlayer.attackPower);
+      var counterAttackMessage = defendingPlayer.name + ' counter attacked ' + attackingPlayer.name + ' for ' + defendingPlayer.attackPower + ' damage!';
+      $('.game-log').append('<p>' + counterAttackMessage +'</p>');
       console.log(attackingPlayer.health);
       attackingPlayer.displayStats();
 
       defendingPlayer.increaseAttackPower();
+
+      // TODO: how do we tell if we won not the round, but game? 
       // perform attack
 
-      winningStateHandler();
-      losingStateHandler();
+      // winningStateHandler();
+      // losingStateHandler();
 
       // TODO: who won? is the game over? 
       // winingHandler()
@@ -135,6 +141,10 @@ $(document).ready(function() {
     } else {
       //not ready for attack button
     }
+
+    winningStateHandler();
+    losingStateHandler();
+
   });
 
 
@@ -196,6 +206,19 @@ $(document).ready(function() {
     return ( defendingPlayer.health >= 0 && attackingPlayer.health <= 0 );
   }
 
+  function isWinningGameState() {
+    var returnValue = false;
+
+    console.log( $('#players-available').text() );
+    // console.log( $('#players-available').length );
+    if ( $('#players-available').text() === '' ) {
+      console.log('win whole game, yes?');
+      returnValue = true;
+    }
+
+    return returnValue; 
+  }
+
   function isLosingState() {
     //not a match
   }
@@ -205,6 +228,13 @@ $(document).ready(function() {
     if ( isWinningState() ) {
       console.log('hooray you win!!!');
       $('#opponent-side').empty();
+
+      // if you win the game...
+      // do something
+      if ( isWinningGameState() ) {
+        console.log('congrats! you have won!!!!');
+      }
+
     }
 
     // check
