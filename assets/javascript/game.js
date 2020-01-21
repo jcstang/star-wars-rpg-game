@@ -1,11 +1,15 @@
-
+// ========================================
+// Star wars RPG game
+// Jacob Stanger
+// Jan 2020
+// ========================================
 
 
 $(document).ready(function() {
   
-  // ========================================
+  // ================================================
   // Player Class - player creation
-  // ========================================
+  // ================================================
   class Player {
     constructor(name, healthCssId, mainCssId) {
       this.name = name;
@@ -37,19 +41,19 @@ $(document).ready(function() {
   }
 
   var obiWanKenobi = new Player('Obi-Wan Kenobi', '#obi-health', 'player-obi');
-  console.log(obiWanKenobi);
+  // console.log(obiWanKenobi);
   obiWanKenobi.displayStats();
 
   var countDooku = new Player('Count Dooku', '#dooku-health', 'player-dooku');
-  console.log(countDooku);
+  // console.log(countDooku);
   countDooku.displayStats();
 
   var palps = new Player('Darth Sidious', '#palps-health', 'player-palps');
-  console.log(palps);
+  // console.log(palps);
   palps.displayStats();
 
   var darthMaul = new Player('Darth Maul', '#maul-health', 'player-maul');
-  console.log(darthMaul);
+  // console.log(darthMaul);
   darthMaul.displayStats();
   
 
@@ -66,7 +70,6 @@ $(document).ready(function() {
 // ========================================
   $('#player-obi').on('click', function() {
     appendSelectedCard(this);
-    // console.log(this);
   });
 
   $('#player-dooku').on('click', function() {
@@ -95,15 +98,10 @@ $(document).ready(function() {
 
       // defendingPlayer attacks attackingPlayer
       attackingPlayer.defendAttack(defendingPlayer.attackPower);
-
       var counterAttackMessage = defendingPlayer.name + ' counter attacked ' + attackingPlayer.name + ' for ' + defendingPlayer.attackPower + ' damage!';
       $('.game-log').prepend('<p>' + counterAttackMessage +'</p>');
-
       console.log(attackingPlayer.health);
       attackingPlayer.displayStats();
-      // winningStateHandler();
-      // FIXME: this is causing a double count
-      // runWinAndLoseHandlers();
       
       // attackingPlayer attacks defendingPlayer
       defendingPlayer.defendAttack(attackingPlayer.attackPower);
@@ -111,33 +109,20 @@ $(document).ready(function() {
       $('.game-log').prepend('<p>' + attackMessage +'</p>');
       console.log(defendingPlayer.health);
       defendingPlayer.displayStats();
-      // losingStateHandler();
       runWinAndLoseHandlers();
       
       // increment on defending players attack power
       // the more he attacks, more attack power
       defendingPlayer.increaseAttackPower();
 
-      // TODO: how do we tell if we won not the round, but game? 
-      // perform attack
-
-      // winningStateHandler();
-      // losingStateHandler();
-
-      // TODO: who won? is the game over? 
-      // winingHandler()
-      // loserHandler()
-      // display results
-
       // code shared with me from tutor.
       // Creates messages for our attack and our opponents counter attack.
       //var attackMessage = "You attacked " + defender.name + " for " + attacker.attack * turnCounter + " damage.";
       //var counterAttackMessage = defender.name + " attacked you back for " + defender.enemyAttackBack + " damage.";
-      // winningStateHandler();
-      // losingStateHandler();
 
     } else {
       //not ready for attack button
+      //TODO: this else statement may not be necessary.
     }
 
 
@@ -167,20 +152,12 @@ $(document).ready(function() {
       // console.log('fill left side');
       $('#my-side').append( $(character).attr('class', 'col-8 container player') );
       defendingPlayer = getPlayerByCssId(character.id);
-      console.log('defending player is: ');
-      // console.log(defendingPlayer);
-      // $('#top-message').text() = 'Choose which enemy to fight, for now...';
       $('#top-message').text('Choose which enemy to fight, for now...');
-
-      // TODO: replace message
-      // $('top-message').replaceWith('Choose which enemy to fight, for now...');
       
     } else if ( isRightSideEmpty() ) {
       // console.log('fill right side');
       $('#opponent-side').append( $(character).attr('class', 'col-8 container player') );
       attackingPlayer = getPlayerByCssId(character.id);
-      console.log('attacking player is: ');
-      // console.log(attackingPlayer);
       
 
     } else {
@@ -201,7 +178,6 @@ $(document).ready(function() {
       selectedPlayer = palps;
 
     } else {
-      //darth maul
       selectedPlayer = darthMaul;
     }
 
@@ -215,15 +191,7 @@ $(document).ready(function() {
   function isWinningGameState() {
     var returnValue = false;
 
-    // console.log( $('#players-available').text() );
-    // console.log( $('#players-available').length );
-    // if ( $('#players-available').text() === '' ) {
-    //   console.log('win whole game, yes?');
-    //   returnValue = true;
-    // }
-
-    // TODO: is this check good?
-    console.log('here is defeated opponents');
+    console.log('here is defeated opponents property');
     console.log(defendingPlayer.defeatedOpponents);
     
     if (defendingPlayer.defeatedOpponents >= 3) {
@@ -234,7 +202,7 @@ $(document).ready(function() {
   }
 
   function isLosingState() {
-    //not a match
+    return ( defendingPlayer.health <= 0 && attackingPlayer.health >= 0 );
   }
 
   function winningStateHandler() {
@@ -242,32 +210,27 @@ $(document).ready(function() {
     if ( isWinningState() ) {
       console.log('hooray you win!!!');
       $('#opponent-side').empty();
-      // TODO: ++ count the enemies defeated
       defendingPlayer.defeatedOpponents++;
 
       // if you win the game...
       if ( isWinningGameState() ) {
         console.log('congrats! you have won!!!! the whole game yo!!');
-
-        // TODO: print a win message
-      $('.game-log').prepend('<p id="winning">Congratulations, The Galaxy will now rest peacefully.</p>');
+        $('.game-log').prepend('<p id="winning">Congratulations, The Galaxy will now rest peacefully.</p>');
       }
 
     }
 
-    // check
-    // ++
+    // TODO: create reset game function.
     // resetgame();
   }
 
   function losingStateHandler() {
     // check
-    // --
-    // resetgame();
-  }
-
-  function attack(left, right) {
-    //stuff
+    if ( isLosingState() ) {
+      console.log('you lose!!!');
+      // TODO: create reset game function.
+      // resetgame();
+    }
   }
 
 });
