@@ -215,7 +215,7 @@ $(document).ready(function() {
       // if you win the game...
       if ( isWinningGameState() ) {
         console.log('congrats! you have won!!!! the whole game yo!!');
-        $('.game-log').prepend('<p id="winning">Congratulations, The Galaxy will now rest peacefully.</p>');
+        $('.game-log').prepend('<p id="winning">Congratulations, You will bring order to The Galaxy.</p>');
       }
 
     }
