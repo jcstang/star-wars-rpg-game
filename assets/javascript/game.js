@@ -103,23 +103,27 @@ $(document).ready(function() {
       // did you win yet? what about lose?
 
       //they are ready for attack button
+      // winningStateHandler();
+      // losingStateHandler();
       console.log('ATTACK!!!!');
-
-      // attackingPlayer attacks defendingPlayer
-      defendingPlayer.defendAttack(attackingPlayer.attackPower);
-      var attackMessage = attackingPlayer.name + ' attacked ' + defendingPlayer.name + ' for ' + attackingPlayer.attackPower + ' damage.'
-      $('.game-log').append('<p>' + attackMessage +'</p>');
-      console.log(defendingPlayer.health);
-      defendingPlayer.displayStats();
 
       // defendingPlayer attacks attackingPlayer
       attackingPlayer.defendAttack(defendingPlayer.attackPower);
       var counterAttackMessage = defendingPlayer.name + ' counter attacked ' + attackingPlayer.name + ' for ' + defendingPlayer.attackPower + ' damage!';
-      $('.game-log').append('<p>' + counterAttackMessage +'</p>');
+      $('.game-log').prepend('<p>' + counterAttackMessage +'</p>');
       console.log(attackingPlayer.health);
       attackingPlayer.displayStats();
-
+      winningStateHandler();
       defendingPlayer.increaseAttackPower();
+      
+      // attackingPlayer attacks defendingPlayer
+      defendingPlayer.defendAttack(attackingPlayer.attackPower);
+      var attackMessage = attackingPlayer.name + ' attacked ' + defendingPlayer.name + ' for ' + attackingPlayer.attackPower + ' damage.'
+      $('.game-log').prepend('<p>' + attackMessage +'</p>');
+      console.log(defendingPlayer.health);
+      defendingPlayer.displayStats();
+      losingStateHandler();
+
 
       // TODO: how do we tell if we won not the round, but game? 
       // perform attack
@@ -136,14 +140,13 @@ $(document).ready(function() {
       // Creates messages for our attack and our opponents counter attack.
       //var attackMessage = "You attacked " + defender.name + " for " + attacker.attack * turnCounter + " damage.";
       //var counterAttackMessage = defender.name + " attacked you back for " + defender.enemyAttackBack + " damage.";
-
+      // winningStateHandler();
+      // losingStateHandler();
 
     } else {
       //not ready for attack button
     }
 
-    winningStateHandler();
-    losingStateHandler();
 
   });
 
