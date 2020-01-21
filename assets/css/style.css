@@ -20,9 +20,11 @@ body {
 .battle-arena {
   background-color: gray;
   border: 2px solid burlywood;
-  height: 400px;
+  /* height: auto; */
+  height: 300px;
 }
 
 .game-log {
   background-color: whitesmoke;
+  height: 10%;
 }
