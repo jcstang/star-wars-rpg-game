@@ -24,11 +24,6 @@ $(document).ready(function() {
 
     }
 
-    attack() {
-      // increase attack power by certain degree
-      //stuff
-    }
-
     increaseAttackPower() {
       this.attackPower *= 2;
     }
@@ -57,14 +52,11 @@ $(document).ready(function() {
   darthMaul.displayStats();
   
 
-  // obiWanKenobi.health - countDooku.attackPower
-  // countDooku.health - obiWanKenobi.attackPower
 
 
-// ======= 
-
-
-  // variables
+  // ===================================================
+  // setting the current players on the board fighting
+  // ===================================================
   var defendingPlayer;
   var attackingPlayer;
 
@@ -74,7 +66,6 @@ $(document).ready(function() {
   $('#player-obi').on('click', function() {
     appendSelectedCard(this);
     // console.log(this);
-    
   });
 
   $('#player-dooku').on('click', function() {
@@ -89,6 +80,7 @@ $(document).ready(function() {
     appendSelectedCard(this);
   });
 
+
   $('#attack-btn').on('click', function() {
     // if, there are 2 charactors in position. else, do nothing
     //do something to attack
@@ -98,32 +90,31 @@ $(document).ready(function() {
     // check for win/lose
     
     if ( !isLeftSideEmpty() && !isRightSideEmpty() ) {
-      // attack left
-      // attack right
-      // did you win yet? what about lose?
-
-      //they are ready for attack button
-      // winningStateHandler();
-      // losingStateHandler();
       console.log('ATTACK!!!!');
 
       // defendingPlayer attacks attackingPlayer
       attackingPlayer.defendAttack(defendingPlayer.attackPower);
+
       var counterAttackMessage = defendingPlayer.name + ' counter attacked ' + attackingPlayer.name + ' for ' + defendingPlayer.attackPower + ' damage!';
       $('.game-log').prepend('<p>' + counterAttackMessage +'</p>');
+
       console.log(attackingPlayer.health);
       attackingPlayer.displayStats();
-      winningStateHandler();
-      defendingPlayer.increaseAttackPower();
-
+      // winningStateHandler();
+      runWinAndLoseHandlers();
+      
       // attackingPlayer attacks defendingPlayer
       defendingPlayer.defendAttack(attackingPlayer.attackPower);
       var attackMessage = attackingPlayer.name + ' attacked ' + defendingPlayer.name + ' for ' + attackingPlayer.attackPower + ' damage.'
       $('.game-log').prepend('<p>' + attackMessage +'</p>');
       console.log(defendingPlayer.health);
       defendingPlayer.displayStats();
-      losingStateHandler();
-
+      // losingStateHandler();
+      runWinAndLoseHandlers();
+      
+      // increment on defending players attack power
+      // the more he attacks, more attack power
+      defendingPlayer.increaseAttackPower();
 
       // TODO: how do we tell if we won not the round, but game? 
       // perform attack
@@ -155,6 +146,11 @@ $(document).ready(function() {
   // ================================================
   // helper functions
   // ================================================
+  function runWinAndLoseHandlers() {
+    winningStateHandler();
+    losingStateHandler();
+  }
+
   function isLeftSideEmpty() {
     return $('#my-side').html() === '';
   }
