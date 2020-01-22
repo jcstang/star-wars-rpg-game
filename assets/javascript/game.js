@@ -15,7 +15,7 @@ $(document).ready(function() {
       this.name = name;
       this.healthCssId = healthCssId;
       this.mainCssId = mainCssId;
-      this.attackPower = 10;
+      this.attackPower = 8;
       this.health = 121;
       this.attacker = false;
       this.attackCount = 0;
@@ -30,7 +30,8 @@ $(document).ready(function() {
     }
 
     increaseAttackPower() {
-      this.attackPower *= 2;
+      // this.attackPower *= 2;
+      this.attackPower += 8;
     }
 
     defendAttack(opponentAttack) {
@@ -53,6 +54,7 @@ $(document).ready(function() {
   palps.displayStats();
 
   var darthMaul = new Player('Darth Maul', '#maul-health', 'player-maul');
+  darthMaul.attackPower = 25;
   // console.log(darthMaul);
   darthMaul.displayStats();
   
